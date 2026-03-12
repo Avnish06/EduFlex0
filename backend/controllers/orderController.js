@@ -1,6 +1,8 @@
 import Course from "../models/courseModel.js";
 import Razorpay from "razorpay";
 import User from "../models/userModel.js";
+
+
 export const createOrder = async (req, res) => {
   try {
     const { courseId } = req.body;
@@ -18,7 +20,7 @@ export const createOrder = async (req, res) => {
       return res.status(400).json({
         message: "Course price is missing or invalid",
       });
-    }
+    } 
 
     if (
       !process.env.RAZORPAY_KEY_ID ||
@@ -47,6 +49,7 @@ export const createOrder = async (req, res) => {
   }
 };
 
+  
 export const verifyPayment = async (req, res) => {
   try {
     const { razorpay_order_id, courseId, userId } = req.body;
@@ -57,8 +60,6 @@ export const verifyPayment = async (req, res) => {
     message: "Missing required payment fields",
   });
 }
-
-
 
     const razorpay = new Razorpay({
       key_id: process.env.RAZORPAY_KEY_ID,
@@ -100,3 +101,4 @@ export const verifyPayment = async (req, res) => {
   }
 };
 
+   
