@@ -19,7 +19,9 @@ const app = express();
 /* =========================
    DATABASE
 ========================= */
-connectDb();
+connectDb().catch((err) => {
+  console.error("Initial MongoDB connection failed:", err.message);
+});
 
 /* =========================
    MIDDLEWARE
@@ -81,7 +83,7 @@ app.get("/", (req, res) => {
 ========================= */
 const PORT = process.env.PORT || 8000;
 
-if (process.env.NODE_ENV !== "production") {
+if (!process.env.VERCEL) {
   app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
   });
