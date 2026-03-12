@@ -30,7 +30,7 @@ import useCreatorCourseData from "./customHooks/getCreatorCourseData";
 import useAllReviews from "./customHooks/getAllReviews";
 
 // ✅ CORRECT BACKEND URL
-export const serverUrl = "https://eduflex0-production.up.railway.app";
+export const serverUrl = "https://edu-flex0-55hx-git-main-avnishs-projects-700a73fb.vercel.app";
 
 function App() {
   const { userData } = useSelector((state) => state.user);
